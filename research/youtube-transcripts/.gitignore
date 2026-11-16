@@ -1,0 +1,4 @@
+private-youtube-research/
+**/*.info.json
+**/*.vtt
+**/*.srt
