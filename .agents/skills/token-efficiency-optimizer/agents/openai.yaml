@@ -1,0 +1,4 @@
+interface:
+  display_name: "Token Efficiency Optimizer"
+  short_description: "Save context tokens without sacrificing accuracy"
+  default_prompt: "Use $token-efficiency-optimizer to complete this task with minimal wasted context and full necessary verification."

@@ -25,6 +25,9 @@ Reusable Codex agent skills collected in one place.
 - [live-performance-dj-architect](.agents/skills/live-performance-dj-architect/SKILL.md)
 - [music-production-director](.agents/skills/music-production-director/SKILL.md)
 
+### General workflow
+- [token-efficiency-optimizer](.agents/skills/token-efficiency-optimizer/SKILL.md): adaptive context budgeting, targeted searches, bounded build-log digests, and compact handoffs without skipping necessary verification
+
 ## Install
 
 Copy an individual complete skill folder into `${CODEX_HOME:-$HOME/.codex}/skills/<skill-name>/`. This repository currently contains entrypoints rather than all full support files, so consult migration status before relying on referenced local tools or docs. Do not assume a named script exists unless the file appears in the directory.
