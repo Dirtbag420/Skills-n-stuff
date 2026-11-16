@@ -47,6 +47,24 @@ Pump.fun launches / migrations / Raydium and Meteora pools
 
 The original companion package includes offline JSONL replay, a deterministic fail-closed security gate, SQLite paper ledger, synthetic scenarios and tests; an opt-in DEX Screener read-only snapshot collector is also provided. Pump.fun live feed, Geyser, RugCheck/SolanaSniffer, holder clustering, TweetScout and Telegram are **not yet verified live integrations**. Do not describe them as working before implemented and tested.
 
+## Meme Coin Hunter 2.0 tested research components
+
+The following scripts and corresponding tests are committed within this skill directory. They are **offline components**, not a connected production scanner:
+
+- `scripts/forensics.py`: identifies suspicious temporally synchronized wallets funded by a common *private* source, with exchange false-positive safeguards; applies a conservative Token-2022 extension policy. The address classification and funding facts must come from trusted, independently normalized Solana records. Neither an association nor a clean result proves common ownership or safety.
+- `scripts/execution_replay.py`: queue-only next-observation paper orders with configurable latency, fee, spread, CPMM approximate price impact, quote freshness, liquidity and exposure limits, and unfilled illiquid exits. A fictional `risk_state='PASS'` in a fixture is **not** live safety verification. Unsupported bonding curves and concentrated-liquidity pools do not fill.
+- `scripts/shadow_audit.py`: monitors post-decision chart movements for rejected and other coins, explicitly censoring missing future price coverage. A later chart high is not executable P&L and cannot override a safety gate.
+
+Run the currently committed tests with:
+
+```bash
+python -m unittest discover -s .agents/skills/meme-coin-hunter-architect/tests -p 'test_*.py' -v
+```
+
+Read `references/v2-architecture-and-roadmap.md` before changing research gates, sources or simulation. Read `references/youtube-research-2026-11.md` for the first 20 timestamped video transcript studies, but treat YouTuber claims as hypotheses, not validated edge. A GitHub Actions workflow runs these tests when the skill changes.
+
+Full end-to-end live market ingestion, normalized Solana RPC data, program lifecycle support, transaction-free quote routing, dashboard and messaging integrations remain **not implemented**. Do not equate synthetic passing tests with on-chain coverage or profitable performance.
+
 ## Required report
 
 ```text
