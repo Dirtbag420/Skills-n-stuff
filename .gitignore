@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.key
+**/secret*
+**/__pycache__/
+*.pyc
+*.sqlite
+*.db
+.DS_Store
