@@ -87,6 +87,14 @@ class ExecutionTests(unittest.TestCase):
         self.assertGreater(s.cash,0)
         self.assertLess(s.cash,1000)
 
+    def test_mark_to_market_uses_quote_freshness_across_other_tokens(self):
+        s=r.MarketReplay({'latency_seconds':1,'max_quote_age_seconds':3})
+        s.on_event(tick(0,signal='BUY'))
+        s.on_event(tick(1))
+        self.assertGreater(s.equity(),s.cash)
+        s.on_event(tick(12,mint='DIFFERENT',source_event_id='different'))
+        self.assertEqual(s.cash,s.equity())
+
     def test_pool_liquidity_cap(self):
         s=r.MarketReplay({'latency_seconds':1,'max_trade_liquidity_fraction':.001})
         s.on_event(tick(0,signal='BUY'))
