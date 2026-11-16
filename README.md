@@ -4,6 +4,19 @@ Reusable Codex agent skills collected in one place.
 
 **Status:** 14 `SKILL.md` entrypoints are committed. The token-efficiency-optimizer skill includes its supporting script, tests, and reference documentation. The earlier music/FM-1 entrypoints were imported from `Dirtbag420/Black-Mass`. Supporting reference documents, scripts, fixtures, assets and test suites from the original skill ZIPs have **not yet been fully migrated into this GitHub repository**. Some SKILL.md files are abridged activation manifests rather than the original full-length instructions. See [MIGRATION_STATUS.md](MIGRATION_STATUS.md).
 
+## Meme Coin Hunter 2.0 development
+
+The Solana paper-research skill now includes three real standalone source modules, their unit tests, and a GitHub Actions check:
+
+- [Wallet forensics and Token-2022 gates](.agents/skills/meme-coin-hunter-architect/scripts/forensics.py)
+- [Realistic next-observation execution replay](.agents/skills/meme-coin-hunter-architect/scripts/execution_replay.py)
+- [Counterfactual rejection shadow audit](.agents/skills/meme-coin-hunter-architect/scripts/shadow_audit.py)
+- [Architecture, development backlog and go/no-go gates](.agents/skills/meme-coin-hunter-architect/references/v2-architecture-and-roadmap.md)
+
+Run `python -m unittest discover -s .agents/skills/meme-coin-hunter-architect/tests -p 'test_*.py' -v` from the repository root.
+
+These are **offline simulations and heuristics**. No trusted live Solana ingestion, profitable strategy, wallet signing or live execution has been implemented.
+
 ## Skills
 
 ### Crypto research
