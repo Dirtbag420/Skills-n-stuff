@@ -2,7 +2,7 @@
 
 Reusable Codex agent skills collected in one place.
 
-**Status:** 13 `SKILL.md` entrypoints are committed. The earlier music/FM-1 entrypoints were imported from `Dirtbag420/Black-Mass`. Supporting reference documents, scripts, fixtures, assets and test suites from the original skill ZIPs have **not yet been fully migrated into this GitHub repository**. Some SKILL.md files are abridged activation manifests rather than the original full-length instructions. See [MIGRATION_STATUS.md](MIGRATION_STATUS.md).
+**Status:** 14 `SKILL.md` entrypoints are committed. The token-efficiency-optimizer skill includes its supporting script, tests, and reference documentation. The earlier music/FM-1 entrypoints were imported from `Dirtbag420/Black-Mass`. Supporting reference documents, scripts, fixtures, assets and test suites from the original skill ZIPs have **not yet been fully migrated into this GitHub repository**. Some SKILL.md files are abridged activation manifests rather than the original full-length instructions. See [MIGRATION_STATUS.md](MIGRATION_STATUS.md).
 
 ## Skills
 
