@@ -55,8 +55,11 @@ class MarketReplay:
 
     def equity(self):
         # Missing/non-tradable/stale positions are marked at zero conservatively.
-        return self.cash + sum(p['qty'] * p['last_price'] if p['mark_valid'] else 0.
-                               for p in self.positions.values())
+        return self.cash + sum(
+            p['qty'] * p['last_price']
+            if p['mark_valid'] and self.last_time is not None
+            and 0 <= (self.last_time - utc(p['last_time'])).total_seconds() <= self.cfg['max_quote_age_seconds']
+            else 0. for p in self.positions.values())
 
     def _quote(self, row, event_time):
         if row.get('risk_state') != 'PASS' or row.get('tradable') is not True:
@@ -132,7 +135,7 @@ class MarketReplay:
         if pos:
             pos['mark_valid'] = quote is not None
             if quote:
-                pos['last_price'], pos['last_time'] = quote[0], when.isoformat()
+                pos['last_price'], pos['last_time'] = quote[0], utc(row['market_observed_at']).isoformat()
         processed = []
         for order in list(self.orders):
             if order['mint'] != mint or when <= order['created']:
@@ -159,6 +162,8 @@ class MarketReplay:
                 event = {**fill, 'mint': mint, 'order_id': order['id'], 'filled_at': when.isoformat(),
                          'from_observation_id': source}
                 self.fills.append(event)
+                if fill['side'] == 'BUY':
+                    self.positions[mint]['last_time'] = utc(row['market_observed_at']).isoformat()
                 self.orders.remove(order)
                 processed.append({'order_id': order['id'], 'status': 'PAPER_FILLED', 'detail': event})
             else:
